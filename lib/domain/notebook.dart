@@ -9,10 +9,10 @@ class Notebook with ChangeNotifier {
   int get length => _notes.length;
 
   // Constructores
-  Notebook();
+  Notebook([String s]);
 
   Notebook.testDataBuilder() {
-    _notes.addAll(List.generate(100, (index) => Note("Item $index")));
+    _notes.addAll(List.generate(100, (index) => Note("Note $index")));
   }
 
   // Accesores
