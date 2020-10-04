@@ -1,5 +1,6 @@
+import 'package:everpobre/Screens/notes_screen.dart';
+import 'package:everpobre/domain/notebook.dart';
 import 'package:everpobre/domain/notebooks.dart';
-import 'package:everpobre/main.dart';
 import 'package:flutter/material.dart';
 
 class NoteBooksListView extends StatefulWidget {
@@ -72,9 +73,28 @@ class _NoteBookSliverState extends State<NoteBookSliver> {
       child: Card(
         child: ListTile(
           leading: const Icon(Icons.map),
-          //title: Text(widget.index.toString()),
           title: Text(widget.notebooks.europeanCountries[widget.index]),
-          //title: Text(widget.notebooks[widget.index].body),
+          onTap: () {
+            //Navigator.pushNamed(
+            //  context,
+            //  NotesListView.routeName,
+            //  arguments: widget.notebooks.europeanCountries[widget.index],
+            //);
+            Notebook.selectedCountry =
+                widget.notebooks.europeanCountries[widget.index];
+
+            Navigator.push<dynamic>(
+              context,
+              MaterialPageRoute<dynamic>(
+                  builder: (context) => NotesListViewScreen(
+                        argument:
+                            widget.notebooks.europeanCountries[widget.index],
+                      )),
+            );
+
+            print(
+                "Pasamos " + widget.notebooks.europeanCountries[widget.index]);
+          },
         ),
       ),
     );

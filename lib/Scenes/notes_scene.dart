@@ -4,8 +4,9 @@ import 'package:intl/intl.dart';
 
 class NotesListView extends StatefulWidget {
   final Notebook _model;
+  final String argument;
 
-  const NotesListView(Notebook model) : _model = model;
+  const NotesListView(Notebook model, this.argument) : _model = model;
 
   @override
   _NotesListViewState createState() => _NotesListViewState();
@@ -55,7 +56,6 @@ class _NoteSliverState extends State<NoteSliver> {
   @override
   Widget build(BuildContext context) {
     DateFormat fmt = DateFormat("yyyy-mm-dd");
-
     return Dismissible(
       key: UniqueKey(),
       onDismissed: (direction) {

@@ -1,5 +1,6 @@
 import 'package:everpobre/domain/notebook.dart';
 import 'package:flutter/material.dart';
+import 'package:everpobre/text_resources.dart';
 
 // Crea una clase `Notebooks` en el dominio. Representa una lista de `Notebook`.
 // Añádele un constructor que carga datos de pruebas: varios `Notebooks` que contienen a varias `Notes`.
@@ -7,93 +8,42 @@ import 'package:flutter/material.dart';
 class Notebooks with ChangeNotifier {
   static final shared = Notebooks();
 
-  final List<Notebook> _notebook = [];
+  final List<Notebook> _notebooks = [];
 
 // Load european countries as Notebooks
-  final europeanCountries = [
-    'Albania',
-    'Andorra',
-    'Armenia',
-    'Austria',
-    'Azerbaijan',
-    'Belarus',
-    'Belgium',
-    'Bosnia and Herzegovina',
-    'Bulgaria',
-    'Croatia',
-    'Cyprus',
-    'Czech Republic',
-    'Denmark',
-    'Estonia',
-    'Finland',
-    'France',
-    'Georgia',
-    'Germany',
-    'Greece',
-    'Hungary',
-    'Iceland',
-    'Ireland',
-    'Italy',
-    'Kazakhstan',
-    'Kosovo',
-    'Latvia',
-    'Liechtenstein',
-    'Lithuania',
-    'Luxembourg',
-    'Macedonia',
-    'Malta',
-    'Moldova',
-    'Monaco',
-    'Montenegro',
-    'Netherlands',
-    'Norway',
-    'Poland',
-    'Portugal',
-    'Romania',
-    'Russia',
-    'San Marino',
-    'Serbia',
-    'Slovakia',
-    'Slovenia',
-    'Spain',
-    'Sweden',
-    'Switzerland',
-    'Turkey',
-    'Ukraine',
-    'United Kingdom',
-    'Vatican City'
-  ];
 
-  int get length => _notebook.length;
+  final europeanCountries = TextResources.europeanCountries;
+
+  int get length => _notebooks.length;
 
   // Constructores
   Notebooks();
 
   Notebooks.testDataBuilder() {
-    _notebook.addAll(List.generate(europeanCountries.length,
+    _notebooks.addAll(List.generate(europeanCountries.length,
         (index) => Notebook("Notebook for $europeanCountries[index]")));
   }
 
   // Accesores
   Notebook operator [](int index) {
-    return _notebook[index];
+    return _notebooks[index];
   }
 
   // Mutadores
   bool remove(Notebook notebook) {
-    final n = _notebook.remove(notebook);
+    final n = _notebooks.remove(notebook);
     notifyListeners();
     return n;
   }
 
   Notebook removeAt(int index) {
-    final Notebook n = _notebook.removeAt(index);
+    final Notebook n = _notebooks.removeAt(index);
     notifyListeners();
     return n;
   }
 
   void add(Notebook notebook) {
-    _notebook.insert(0, notebook);
+    _notebooks.insert(0, notebook);
     notifyListeners();
   }
 

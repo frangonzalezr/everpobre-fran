@@ -1,11 +1,10 @@
 import 'package:everpobre/domain/notebook.dart';
 import 'package:everpobre/text_resources.dart';
 import 'package:flutter/material.dart';
-
 import 'Screens/notebooks_screen.dart';
 import 'Screens/notes_screen.dart';
 
-final Notebook model = Notebook.testDataBuilder();
+final Notebook model = Notebook.testDataBuilder(null);
 void main() {
   runApp(TreeBuilder());
 }
@@ -48,7 +47,7 @@ Widget _myListView(BuildContext context) {
         },
       ),
       ListTile(
-        title: Text('Notes List'),
+        title: Text('Selected Notebook Notes List'),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
           _pushScreen(context, NotesListViewScreen());
